@@ -69,7 +69,7 @@
 .hero__desc {
   font-size: var(--fs-lg);
   color: var(--muted);
-  max-width: 520px;
+  max-width: 525px;
   margin-bottom: 36px;
 }
 
