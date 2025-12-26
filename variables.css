@@ -1,0 +1,25 @@
+/* ================================
+   variables.css
+   ================================ */
+
+:root {
+  --font-sans: "Questrial", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Arial, sans-serif;
+
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #666666;
+
+  --primary: #8b5cf6;
+  --primary-2: #ff6a5f;
+
+  --border: #111111;
+
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 44px;
+  --fs-xxl: 72px;
+
+  --container: 1200px;
+}
