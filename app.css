@@ -20,11 +20,10 @@
   --subtitle-font-: 0.22em;
   --subtitle-transform: uppercase;
 
-  --color-bg: #ffffff;
+  --color-white: #ffffff;
   --color-surface: #0b0b0e;
   --color-text: #0b0b0e;
   --color-body-p: #7a7a7a;
-  --color-text-invert: #e9e9ee;
   --color-muted: rgba(11, 11, 14, 0.72);
   --color-muted-invert: #b9bac4;
 
@@ -45,6 +44,34 @@
 html,
 body {
   height: 100%;
+  scroll-padding-top: 100px;
+  /* adjust as needed */
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+}
+
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: smooth;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
@@ -52,7 +79,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-base);
   color: var(--color-text);
-  background: var(--color-bg);
+  background: var(--color-white);
 }
 
 img {
@@ -107,6 +134,10 @@ p {
   gap: 10px;
   letter-spacing: 2px;
 }
+
+
+
+
 
 /* ================================
    HERO
@@ -164,7 +195,7 @@ p {
 
 .btn--link {
   padding: 5px;
-  border-bottom: 2px solid var(--color-border);
+  border-bottom: 2px solid var(--platinum-border);
   color: var(--color-text);
 }
 
@@ -236,7 +267,7 @@ p {
    ================================ */
 .faq {
   background: var(--color-surface);
-  color: var(--color-text-invert);
+  color: var(--color-white);
   padding: clamp(56px, 6vw, 96px) 24px;
 }
 
@@ -256,9 +287,8 @@ p {
 }
 
 .faq__title {
-  margin: 0 0 18px;
   font-size: var(--h2);
-  line-height: 1.02;
+  line-height: 1.2em;
   font-weight: 650;
   color: #fff;
 }
@@ -272,9 +302,8 @@ p {
   display: inline-flex;
   gap: 10px;
   align-items: center;
-  margin-top: 18px;
-  padding-bottom: 6px;
-  color: var(--color-text-invert);
+  padding: 5px;
+  color: var(--color-white);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 13px;
@@ -310,11 +339,11 @@ p {
   background: transparent;
   border: 0;
   padding: 26px 0;
-  color: var(--color-text-invert);
+  color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 20px;
   cursor: pointer;
   text-align: left;
 }
@@ -441,13 +470,13 @@ p {
 
 /* Bottom layout */
 .footer__bottom {
- display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 18px;
-    padding: 18px 0 8px;
-    border-top: 1px solid var(--dark-mode-border);
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0 8px;
+  border-top: 1px solid var(--dark-mode-border);
+  justify-content: space-between;
 }
 
 /* Left */
@@ -572,45 +601,6 @@ p {
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* scroll offset for anchor jumps */
-html,
-body {
-  scroll-padding-top: 100px;
-}
-
-/* smooth scroll only if user allows motion */
-@media (prefers-reduced-motion: no-preference) {
-
-  html,
-  body {
-    scroll-behavior: smooth;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  html,
-  body {
-    scroll-behavior: auto;
-  }
-}
-
-/* Lenis support */
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: smooth;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
 
 /* Sticky pill menu */
 #menuhopin.footerMenu {
@@ -630,8 +620,8 @@ html.lenis {
   padding: 10px;
 
   border-radius: 999px;
-  border: 1px solid rgba(233, 233, 238, 0.22);
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--dark-mode-border);
+  background: rgba(255, 255, 255, 0.06)ZZ;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 
   transition: transform 0.34s ease;
