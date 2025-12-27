@@ -1,76 +1,104 @@
-/* HERO HEADLINE ROTATION */
-(() => {
+document.addEventListener("DOMContentLoaded", () => {
+  /* =========================
+     HERO HEADLINE ROTATION
+     ========================= */
   const headlines = document.querySelectorAll(".hero__title .headline");
-  if (!headlines.length) return;
 
-  let current = 0;
-  const intervalTime = 2500;
+  if (headlines.length) {
+    let current = 0;
+    const intervalTime = 2500;
 
-  headlines.forEach((h, i) => h.classList.toggle("active", i === 0));
+    headlines.forEach((h, i) => h.classList.toggle("active", i === 0));
 
-  let timer = setInterval(nextHeadline, intervalTime);
+    function nextHeadline() {
+      headlines[current].classList.remove("active");
+      current = (current + 1) % headlines.length;
 
-  function nextHeadline() {
-    headlines[current].classList.remove("active");
-    current = (current + 1) % headlines.length;
-    void headlines[current].offsetWidth;
-    headlines[current].classList.add("active");
+      // restart animation
+      void headlines[current].offsetWidth;
+
+      headlines[current].classList.add("active");
+    }
+
+    let timer = setInterval(nextHeadline, intervalTime);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) clearInterval(timer);
+      else timer = setInterval(nextHeadline, intervalTime);
+    });
+  } else {
+    console.warn("Headline rotation: .hero__title .headline not found");
   }
 
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) clearInterval(timer);
-    else timer = setInterval(nextHeadline, intervalTime);
-  });
-})();
-
-/* FAQ ACCORDION + FA ICONS */
-(() => {
+  /* =========================
+     FAQ ACCORDION + ICONS
+     ========================= */
   const items = document.querySelectorAll(".faq__item");
   if (!items.length) return;
 
-  function setIcon(btn, expanded) {
-    const icon = btn.querySelector(".faq__icon i");
-    if (!icon) return;
-    icon.classList.toggle("fa-plus", !expanded);
-    icon.classList.toggle("fa-minus", expanded);
+  // If Font Awesome fails to load, show fallback text icons
+  const faLoaded = !!document.querySelector('link[href*="fontawesome"], link[href*="use.fontawesome.com"], link[href*="cdnjs.cloudflare.com/ajax/libs/font-awesome"]');
+
+  if (!faLoaded) {
+    document.querySelectorAll(".faq__icon").forEach((el) => (el.style.display = "none"));
+    document.querySelectorAll(".faq__iconText").forEach((el) => (el.style.display = "grid"));
+  }
+
+  function setIcons(item, expanded) {
+    // Font Awesome icon
+    const icon = item.querySelector(".faq__icon i");
+    if (icon) {
+      icon.classList.toggle("fa-plus", !expanded);
+      icon.classList.toggle("fa-minus", expanded);
+    }
+
+    // Fallback text icon
+    const txt = item.querySelector(".faq__iconText");
+    if (txt) txt.textContent = expanded ? "−" : "+";
   }
 
   function closeItem(item) {
-    const btn = item.querySelector(".faq__question");
     const panel = item.querySelector(".faq__answer");
     item.classList.remove("is-open");
-    btn.setAttribute("aria-expanded", "false");
     panel.style.maxHeight = "0px";
-    setIcon(btn, false);
+    setIcons(item, false);
   }
 
   function openItem(item) {
-    const btn = item.querySelector(".faq__question");
     const panel = item.querySelector(".faq__answer");
     item.classList.add("is-open");
-    btn.setAttribute("aria-expanded", "true");
     panel.style.maxHeight = panel.scrollHeight + "px";
-    setIcon(btn, true);
+    setIcons(item, true);
   }
 
+  // Init
   items.forEach((item) => {
-    const btn = item.querySelector(".faq__question");
     const panel = item.querySelector(".faq__answer");
-    const expanded = btn.getAttribute("aria-expanded") === "true";
+    const btn = item.querySelector(".faq__question");
+    if (!panel || !btn) return;
 
-    if (expanded) openItem(item);
-    else panel.style.maxHeight = "0px";
+    if (item.classList.contains("is-open")) openItem(item);
+    else closeItem(item);
 
     btn.addEventListener("click", () => {
-      const isOpen = btn.getAttribute("aria-expanded") === "true";
-      items.forEach((other) => other !== item && closeItem(other));
+      const isOpen = item.classList.contains("is-open");
+
+      // close others
+      items.forEach((other) => {
+        if (other !== item) closeItem(other);
+      });
+
+      // toggle
       if (isOpen) closeItem(item);
       else openItem(item);
     });
   });
 
+  // Resize fix
   window.addEventListener("resize", () => {
-    const openPanel = document.querySelector(".faq__item.is-open .faq__answer");
-    if (openPanel) openPanel.style.maxHeight = openPanel.scrollHeight + "px";
+    const openItemEl = document.querySelector(".faq__item.is-open");
+    if (!openItemEl) return;
+    const panel = openItemEl.querySelector(".faq__answer");
+    panel.style.maxHeight = panel.scrollHeight + "px";
   });
-})();
+});

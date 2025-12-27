@@ -4,26 +4,20 @@
 
 /* -------- Variables -------- */
 :root {
-  /* Layout */
   --container: 1200px;
 
-  /* Fonts */
   --font-body: "Questrial", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
-  /* Headings */
   --h1: clamp(2.2rem, 4vw, 3rem);
   --h2: clamp(40px, 4.2vw, 56px);
 
-  /* Body text */
   --text-base: 16px;
   --text-lg: 18px;
 
-  /* Subtitle (for kicker like FAQ'S) ✅ */
   --subtitle-size: 12px;
   --subtitle-letter-spacing: 0.22em;
   --subtitle-transform: uppercase;
 
-  /* Colors */
   --color-bg: #ffffff;
   --color-surface: #0b0b0e;
   --color-text: #0b0b0e;
@@ -36,7 +30,6 @@
 
   --accent: #b35cff;
 
-  /* Gradient for text ✅ */
   --gradient: linear-gradient(108deg, #b16cea 8%, #ff5e69 40%, #ff8a56 77%, #ffa84b 91%);
 }
 
@@ -68,7 +61,21 @@ a {
   text-decoration: none;
 }
 
-/* ✅ Reusable Gradient Text Class */
+/* -------- Headings (h1–h6) -------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 650;
+  line-height: 1.15;
+  color: inherit;
+}
+
+/* -------- Utilities -------- */
 .bg {
   background-image: var(--gradient);
   -webkit-background-clip: text;
@@ -76,7 +83,6 @@ a {
   -webkit-text-fill-color: transparent;
 }
 
-/* ✅ Subtitle utility class (use on div/p/span etc.) */
 .subtitle {
   font-size: var(--subtitle-size);
   letter-spacing: var(--subtitle-letter-spacing);
@@ -84,7 +90,6 @@ a {
   line-height: 1;
 }
 
-/* Buttons base */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -232,9 +237,8 @@ a {
   align-items: start;
 }
 
-/* Kicker now inherits from .subtitle + you can override color */
 .faq__kicker {
-  background-image: linear-gradient(108deg, #b16cea 8%, #ff5e69 40%, #ff8a56 77%, #ffa84b 91%);
+  background-image: var(--gradient);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -297,8 +301,6 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  font-size: clamp(18px, 1.6vw, 22px);
-  line-height: 1.25;
   cursor: pointer;
   text-align: left;
 }
@@ -309,7 +311,15 @@ a {
   border-radius: 6px;
 }
 
-.faq__icon {
+.faq__questionTitle {
+  color: #fff;
+  margin: 0;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.25;
+}
+
+.faq__icon,
+.faq__iconText {
   width: 28px;
   height: 28px;
   border: 1px solid rgba(233, 233, 238, 0.26);
@@ -319,6 +329,20 @@ a {
   color: rgba(233, 233, 238, 0.9);
   flex: 0 0 28px;
   font-size: 14px;
+}
+
+/* fallback text hidden by default */
+.faq__iconText {
+  display: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.faq__icon i {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
 }
 
 .faq__answer {
