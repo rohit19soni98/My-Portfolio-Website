@@ -1,69 +1,76 @@
-    const headlines = document.querySelectorAll('.hero__title .headline');
-    let currentIndex = 0;
-    const intervalTime = 2500;
+/* HERO HEADLINE ROTATION */
+(() => {
+  const headlines = document.querySelectorAll(".hero__title .headline");
+  if (!headlines.length) return;
 
-    setInterval(() => {
-      headlines[currentIndex].classList.remove('active');
+  let current = 0;
+  const intervalTime = 2500;
 
-      currentIndex = (currentIndex + 1) % headlines.length;
+  headlines.forEach((h, i) => h.classList.toggle("active", i === 0));
 
-      // restart animation
-      void headlines[currentIndex].offsetWidth;
+  let timer = setInterval(nextHeadline, intervalTime);
 
-      headlines[currentIndex].classList.add('active');
-    }, intervalTime);
+  function nextHeadline() {
+    headlines[current].classList.remove("active");
+    current = (current + 1) % headlines.length;
+    void headlines[current].offsetWidth;
+    headlines[current].classList.add("active");
+  }
 
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) clearInterval(timer);
+    else timer = setInterval(nextHeadline, intervalTime);
+  });
+})();
 
+/* FAQ ACCORDION + FA ICONS */
+(() => {
+  const items = document.querySelectorAll(".faq__item");
+  if (!items.length) return;
 
-    // FAQ
+  function setIcon(btn, expanded) {
+    const icon = btn.querySelector(".faq__icon i");
+    if (!icon) return;
+    icon.classList.toggle("fa-plus", !expanded);
+    icon.classList.toggle("fa-minus", expanded);
+  }
 
-  (function () {
-    const items = document.querySelectorAll(".faq__item");
+  function closeItem(item) {
+    const btn = item.querySelector(".faq__question");
+    const panel = item.querySelector(".faq__answer");
+    item.classList.remove("is-open");
+    btn.setAttribute("aria-expanded", "false");
+    panel.style.maxHeight = "0px";
+    setIcon(btn, false);
+  }
 
-    function closeItem(item) {
-      const btn = item.querySelector(".faq__question");
-      const panel = item.querySelector(".faq__answer");
-      item.classList.remove("is-open");
-      btn.setAttribute("aria-expanded", "false");
-      panel.style.maxHeight = "0px";
-    }
+  function openItem(item) {
+    const btn = item.querySelector(".faq__question");
+    const panel = item.querySelector(".faq__answer");
+    item.classList.add("is-open");
+    btn.setAttribute("aria-expanded", "true");
+    panel.style.maxHeight = panel.scrollHeight + "px";
+    setIcon(btn, true);
+  }
 
-    function openItem(item) {
-      const btn = item.querySelector(".faq__question");
-      const panel = item.querySelector(".faq__answer");
-      item.classList.add("is-open");
-      btn.setAttribute("aria-expanded", "true");
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
+  items.forEach((item) => {
+    const btn = item.querySelector(".faq__question");
+    const panel = item.querySelector(".faq__answer");
+    const expanded = btn.getAttribute("aria-expanded") === "true";
 
-    // Init based on aria-expanded (first one open in markup)
-    items.forEach((item) => {
-      const btn = item.querySelector(".faq__question");
-      const panel = item.querySelector(".faq__answer");
-      const expanded = btn.getAttribute("aria-expanded") === "true";
+    if (expanded) openItem(item);
+    else panel.style.maxHeight = "0px";
 
-      if (expanded) openItem(item);
-      else panel.style.maxHeight = "0px";
-
-      btn.addEventListener("click", () => {
-        const isOpen = btn.getAttribute("aria-expanded") === "true";
-
-        // Only one open at a time
-        items.forEach((other) => other !== item && closeItem(other));
-
-        if (isOpen) closeItem(item);
-        else openItem(item);
-      });
+    btn.addEventListener("click", () => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      items.forEach((other) => other !== item && closeItem(other));
+      if (isOpen) closeItem(item);
+      else openItem(item);
     });
+  });
 
-    // Keep open panel height correct on resize
-    window.addEventListener("resize", () => {
-      items.forEach((item) => {
-        const btn = item.querySelector(".faq__question");
-        const panel = item.querySelector(".faq__answer");
-        if (btn.getAttribute("aria-expanded") === "true") {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-      });
-    });
-  })();
+  window.addEventListener("resize", () => {
+    const openPanel = document.querySelector(".faq__item.is-open .faq__answer");
+    if (openPanel) openPanel.style.maxHeight = openPanel.scrollHeight + "px";
+  });
+})();

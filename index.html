@@ -1,251 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home</title>
 
-  <!-- CSS ENTRY -->
-  <link rel="stylesheet" href="hero.css">
-  <link rel="stylesheet" href="style.css">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <link rel="stylesheet" href="app.css" />
 </head>
 
 <body>
-  <main class="hero">
-    <div class="hero__container">
-      <!-- LEFT CONTENT -->
-      <section class="hero__copy">
+  <main>
 
-        <h1 class="hero__title">
-          <span class="hero__kicker-gradient"> I Design Products</span>
-          <br>
-          <span class="headline active">That people love &amp; remember.</span>
-          <span class="headline">That inspire &amp; engage.</span>
-          <span class="headline">That make life easier.</span>
-        </h1>
+    <!-- HERO -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero__container">
 
-        <p class="hero__desc">
-          Hi! I’m <strong>Rohit</strong>, a product designer based in Nagpur. I
-          create user-friendly interfaces for fast-growing startups.
-        </p>
+        <div class="hero__copy">
+          <h1 class="hero__title">
+            <span class="bg hero__kicker">I Design Products</span><br />
+            <span class="headline active">That people love &amp; remember.</span>
+            <span class="headline">That inspire &amp; engage.</span>
+            <span class="headline">That make life easier.</span>
+          </h1>
 
-        <div class="hero__actions">
-          <a href="#" class="btn btn--outline-shadow">
-            BOOK A CALL <span class="arrow">→</span>
-          </a>
+          <p class="hero__desc">
+            Hi! I’m <strong>Rohit</strong>, a product designer based in Nagpur.
+            I create user-friendly interfaces for fast-growing startups.
+          </p>
 
-          <a href="#" class="btn btn--link">
-            DOWNLOAD CV <span class="arrow">→</span>
-          </a>
+          <div class="hero__actions">
+            <a href="#" class="btn btn--outline-shadow">
+              BOOK A CALL <span class="arrow" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+            </a>
+
+            <a href="#" class="btn btn--link" download>
+              DOWNLOAD CV <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
-      </section>
 
-      <!-- RIGHT IMAGE -->
-      <section class="hero__imageWrap">
-        <div class="hero__imageFade">
-          <img src="./Assests/My-Photo.webp" alt="Profile photo" class="hero__image" />
+        <div class="hero__imageWrap">
+          <div class="hero__imageFade">
+            <img
+              src="./Assests/My-Photo.webp"
+              alt="Rohit profile photo"
+              class="hero__image"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
-      </section>
 
+      </div>
+    </section>
 
-    </div>
+    <!-- FAQ -->
+    <section class="faq" id="faq" aria-label="Frequently Asked Questions">
+      <div class="faq__container">
+
+        <aside class="faq__intro">
+          <!-- kicker is now DIV, styled using subtitle variable -->
+          <div class="subtitle faq__kicker">FAQ'S</div>
+
+          <h2 class="faq__title">Frequently Asked<br />Questions</h2>
+
+          <p class="faq__desc">
+            Find quick answers to the most common questions about my work, services, and process.
+          </p>
+          <p class="faq__desc">
+            This section helps you understand how I collaborate, deliver projects, and ensure a smooth experience.
+          </p>
+
+          <a class="faq__cta" href="#contact">
+            CONTACT ME <span class="faq__ctaArrow" aria-hidden="true">→</span>
+          </a>
+        </aside>
+
+        <div class="faq__accordion" role="region" aria-label="FAQ Accordion">
+
+          <div class="faq__item is-open">
+            <button class="faq__question" type="button" aria-expanded="true" aria-controls="faq1">
+              <span>How long does it take to build a website?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <i class="fa-solid fa-minus"></i>
+              </span>
+            </button>
+
+            <div class="faq__answer" id="faq1" role="region">
+              <p>
+                Timelines vary based on project size, but most websites take 2–4 weeks from start to finish.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq2">
+              <span>My website will work on mobile?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <i class="fa-solid fa-plus"></i>
+              </span>
+            </button>
+
+            <div class="faq__answer" id="faq2" role="region">
+              <p>
+                Yes—everything is built mobile-first and tested across modern devices and screen sizes.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq3">
+              <span>Do I need to provide the content and images?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <i class="fa-solid fa-plus"></i>
+              </span>
+            </button>
+
+            <div class="faq__answer" id="faq3" role="region">
+              <p>
+                You can, but you don’t have to. I can help with copy structure and sourcing/optimizing images.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
-
-
-  <section class="resume" id="resume">
-    <div class="resume__container">
-      <!-- Education -->
-      <div class="resume__col">
-        <div class="resume__header">
-          <span class="resume__headerIcon" aria-hidden="true">📚</span>
-          <h3 class="resume__headerTitle">Education</h3>
-        </div>
-
-        <div class="resume__list">
-          <a class="resume__row" href="#" target="_blank" rel="noreferrer">
-            <div class="resume__left">
-              <div class="resume__name">D.N.C</div>
-              <div class="resume__meta">B.COM (R.T.M.N.U)</div>
-            </div>
-
-            <div class="resume__right">
-              <span class="resume__year">2019</span>
-              <span class="resume__arrow" aria-hidden="true">↗</span>
-            </div>
-          </a>
-
-          <a class="resume__row" href="#" target="_blank" rel="noreferrer">
-            <div class="resume__left">
-              <div class="resume__name">S.R.S Junior College</div>
-              <div class="resume__meta">H.S.C (M.S.B.S.H.S)</div>
-            </div>
-
-            <div class="resume__right">
-              <span class="resume__year">2016</span>
-              <span class="resume__arrow" aria-hidden="true">↗</span>
-            </div>
-          </a>
-
-          <a class="resume__row" href="#" target="_blank" rel="noreferrer">
-            <div class="resume__left">
-              <div class="resume__name">St. John's High School</div>
-              <div class="resume__meta">S.S.C (M.S.B.S.H.S)</div>
-            </div>
-
-            <div class="resume__right">
-              <span class="resume__year">2014</span>
-              <span class="resume__arrow" aria-hidden="true">↗</span>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Work Experience -->
-      <div class="resume__col">
-        <div class="resume__header">
-          <span class="resume__headerIcon" aria-hidden="true">💼</span>
-          <h3 class="resume__headerTitle">Work Experience</h3>
-        </div>
-
-        <div class="resume__list">
-          <a class="resume__row resume__row--work" href="#" target="_blank" rel="noreferrer">
-            <div class="resume__badge" aria-hidden="true">
-              <!-- simple briefcase icon -->
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
-                <path d="M9 7V6a3 3 0 0 1 6 0v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                <path
-                  d="M4.5 10.2c0-1 0.8-1.8 1.8-1.8h11.4c1 0 1.8.8 1.8 1.8v6.6c0 1-.8 1.8-1.8 1.8H6.3c-1 0-1.8-.8-1.8-1.8v-6.6Z"
-                  stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
-                <path d="M4.5 13h15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-              </svg>
-            </div>
-
-            <div class="resume__left">
-              <div class="resume__name">Square Meters Digital</div>
-              <div class="resume__meta">Project Manager</div>
-            </div>
-
-            <div class="resume__right resume__right--date">
-              <span class="resume__date">• April 2024 - Current</span>
-              <span class="resume__arrow" aria-hidden="true">↗</span>
-            </div>
-          </a>
-
-          <a class="resume__row resume__row--work" href="#" target="_blank" rel="noreferrer">
-            <div class="resume__badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
-                <path d="M9 7V6a3 3 0 0 1 6 0v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                <path
-                  d="M4.5 10.2c0-1 0.8-1.8 1.8-1.8h11.4c1 0 1.8.8 1.8 1.8v6.6c0 1-.8 1.8-1.8 1.8H6.3c-1 0-1.8-.8-1.8-1.8v-6.6Z"
-                  stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
-                <path d="M4.5 13h15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-              </svg>
-            </div>
-
-            <div class="resume__left">
-              <div class="resume__name">NME.Digital</div>
-              <div class="resume__meta">Senior Graphic Designer</div>
-            </div>
-
-            <div class="resume__right resume__right--date">
-              <span class="resume__date">• June 2019 - March 2024</span>
-              <span class="resume__arrow" aria-hidden="true">↗</span>
-            </div>
-          </a>
-
-          <a class="resume__row resume__row--work" href="#" target="_blank" rel="noreferrer">
-            <div class="resume__badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
-                <path d="M9 7V6a3 3 0 0 1 6 0v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                <path
-                  d="M4.5 10.2c0-1 0.8-1.8 1.8-1.8h11.4c1 0 1.8.8 1.8 1.8v6.6c0 1-.8 1.8-1.8 1.8H6.3c-1 0-1.8-.8-1.8-1.8v-6.6Z"
-                  stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
-                <path d="M4.5 13h15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-              </svg>
-            </div>
-
-            <div class="resume__left">
-              <div class="resume__name">Madfries</div>
-              <div class="resume__meta">Store Manager</div>
-            </div>
-
-            <div class="resume__right resume__right--date">
-              <span class="resume__date">• August 2018 - May 2019</span>
-              <span class="resume__arrow" aria-hidden="true">↗</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="faq__container">
-      <!-- Left column -->
-      <aside class="faq__intro">
-        <p class="faq__kicker">FAQ'S</p>
-        <h2 class="faq__title">Frequently Asked<br />Questions</h2>
-
-        <p class="faq__desc">
-          Find quick answers to the most common questions about my work, services, and process.
-        </p>
-        <p class="faq__desc">
-          This section helps you understand how I collaborate, deliver projects, and ensure a smooth experience.
-        </p>
-
-        <a class="faq__cta" href="#contact">
-          CONTACT ME <span class="faq__ctaArrow">→</span>
-        </a>
-      </aside>
-
-      <!-- Right column -->
-      <div class="faq__accordion" role="region" aria-label="Frequently asked questions">
-        <div class="faq__item">
-          <button class="faq__question" type="button" aria-expanded="true">
-            <span>How long does it take to build a website?</span>
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq__answer" role="region">
-            <p>
-              Timelines vary based on project size, but most websites take 2–4 weeks from start to finish.
-              We’ll give you a clear timeline after the discovery call.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <button class="faq__question" type="button" aria-expanded="false">
-            <span>My website will work on mobile?</span>
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq__answer" role="region">
-            <p>
-              Yes—everything is built mobile-first and tested across modern devices and screen sizes to ensure it’s
-              responsive.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <button class="faq__question" type="button" aria-expanded="false">
-            <span>Do I need to provide the content and images?</span>
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq__answer" role="region">
-            <p>
-              You can, but you don’t have to. I can help with copy structure, light copywriting, and sourcing/optimizing
-              images.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <script src="script.js"></script>
 </body>
-
-
 </html>
