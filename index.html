@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (optional, JS has fallback if it doesn't load) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
 
   <link rel="stylesheet" href="./app.css" />
@@ -32,18 +32,18 @@
             <span class="headline">That make life easier.</span>
           </h1>
 
-          <p class="hero__desc">
+          <p>
             Hi! I’m <strong>Rohit</strong>, a product designer based in Nagpur.
             I create user-friendly interfaces for fast-growing startups.
           </p>
 
           <div class="hero__actions">
             <a href="#" class="btn btn--outline-shadow">
-              BOOK A CALL <span class="arrow" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+              BOOK A CALL <span class="arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right-long"></i></span>
             </a>
 
             <a href="#" class="btn btn--link" download>
-              DOWNLOAD CV <span class="arrow" aria-hidden="true">→</span>
+              DOWNLOAD CV <span class="arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right-long"></i></span>
             </a>
           </div>
         </div>
@@ -69,8 +69,6 @@
 
           <p class="faq__desc">
             Find quick answers to the most common questions about my work, services, and process.
-          </p>
-          <p class="faq__desc">
             This section helps you understand how I collaborate, deliver projects, and ensure a smooth experience.
           </p>
 
@@ -85,13 +83,10 @@
             <button class="faq__question" type="button">
               <h4 class="faq__questionTitle">How long does it take to build a website?</h4>
 
-              <!-- FontAwesome icon (if FA fails, JS will show + / − text fallback) -->
               <span class="faq__icon" aria-hidden="true">
                 <i class="fa-solid fa-minus"></i>
               </span>
 
-              <!-- Fallback text icon (hidden by default, shown if FA not loaded) -->
-              <span class="faq__iconText" aria-hidden="true">−</span>
             </button>
 
             <div class="faq__answer">
@@ -107,25 +102,21 @@
                 <i class="fa-solid fa-plus"></i>
               </span>
 
-              <span class="faq__iconText" aria-hidden="true">+</span>
             </button>
 
             <div class="faq__answer">
-              <p>Yes—everything is built mobile-first and tested across modern devices and screen sizes.</p>
+              <p>Absolutely! Every website I build is fully responsive, meaning it will look and work great on all
+                screen sizes.</p>
             </div>
           </div>
 
           <div class="faq__item">
             <button class="faq__question" type="button">
               <h4 class="faq__questionTitle">Do I need to provide the content and images?</h4>
-
               <span class="faq__icon" aria-hidden="true">
                 <i class="fa-solid fa-plus"></i>
               </span>
-
-              <span class="faq__iconText" aria-hidden="true">+</span>
             </button>
-
             <div class="faq__answer">
               <p>You can, but you don’t have to. I can help with copy structure and sourcing/optimizing images.</p>
             </div>
@@ -137,7 +128,45 @@
 
   </main>
 
-  <!-- IMPORTANT: defer makes sure JS runs after HTML is ready -->
+  <!-- FOOTER -->
+  <footer class="footer" aria-label="Footer">
+    <div class="footer__container">
+
+      <div class="footer__cta">
+        <h2 class="footer__title">Ready to make something kickass?</h2>
+        <h2 class="footer__subtitle bg">Let's get on a call.</h2>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__left">
+          <span>Copyright © 2025 Rohit Soni</span>
+          <span class="footer__sep" aria-hidden="true">|</span>
+          <a class="footer__link" href="#">Privacy Policy</a>
+        </div>
+
+        <div class="footer__right">
+          Website Made with ☕ ❤️
+        </div>
+      </div>
+
+
+
+    </div>
+    <button class="footer__toTop" type="button" aria-label="Back to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <!-- Sticky Bottom Footer Menu (outside footer grid) -->
+    <nav id="menuhopin" class="footerMenu glassmorphism" aria-label="Footer menu">
+      <a class="footerMenu__link is-active" href="#">Home</a>
+      <a class="footerMenu__link" href="#services">Services</a>
+      <a class="footerMenu__link" href="#projects">Projects</a>
+      <a class="footerMenu__link" href="#blog">Blog</a>
+      <a class="footerMenu__link" href="#contact">Contact Me</a>
+    </nav>
+  </footer>
+
+
+
   <script src="./script.js" defer></script>
 </body>
 

@@ -34,71 +34,89 @@ document.addEventListener("DOMContentLoaded", () => {
      FAQ ACCORDION + ICONS
      ========================= */
   const items = document.querySelectorAll(".faq__item");
-  if (!items.length) return;
+  if (items.length) {
+    function setIcons(item, expanded) {
+      // Font Awesome icon
+      const icon = item.querySelector(".faq__icon i");
+      if (icon) {
+        icon.classList.toggle("fa-plus", !expanded);
+        icon.classList.toggle("fa-minus", expanded);
+      }
 
-  // If Font Awesome fails to load, show fallback text icons
-  const faLoaded = !!document.querySelector('link[href*="fontawesome"], link[href*="use.fontawesome.com"], link[href*="cdnjs.cloudflare.com/ajax/libs/font-awesome"]');
-
-  if (!faLoaded) {
-    document.querySelectorAll(".faq__icon").forEach((el) => (el.style.display = "none"));
-    document.querySelectorAll(".faq__iconText").forEach((el) => (el.style.display = "grid"));
-  }
-
-  function setIcons(item, expanded) {
-    // Font Awesome icon
-    const icon = item.querySelector(".faq__icon i");
-    if (icon) {
-      icon.classList.toggle("fa-plus", !expanded);
-      icon.classList.toggle("fa-minus", expanded);
+      // Optional fallback text icon (only if you added it in HTML)
+      const txt = item.querySelector(".faq__iconText");
+      if (txt) txt.textContent = expanded ? "−" : "+";
     }
 
-    // Fallback text icon
-    const txt = item.querySelector(".faq__iconText");
-    if (txt) txt.textContent = expanded ? "−" : "+";
-  }
+    function closeItem(item) {
+      const panel = item.querySelector(".faq__answer");
+      item.classList.remove("is-open");
+      if (panel) panel.style.maxHeight = "0px";
+      setIcons(item, false);
+    }
 
-  function closeItem(item) {
-    const panel = item.querySelector(".faq__answer");
-    item.classList.remove("is-open");
-    panel.style.maxHeight = "0px";
-    setIcons(item, false);
-  }
+    function openItem(item) {
+      const panel = item.querySelector(".faq__answer");
+      item.classList.add("is-open");
+      if (panel) panel.style.maxHeight = panel.scrollHeight + "px";
+      setIcons(item, true);
+    }
 
-  function openItem(item) {
-    const panel = item.querySelector(".faq__answer");
-    item.classList.add("is-open");
-    panel.style.maxHeight = panel.scrollHeight + "px";
-    setIcons(item, true);
-  }
+    // Init
+    items.forEach((item) => {
+      const panel = item.querySelector(".faq__answer");
+      const btn = item.querySelector(".faq__question");
+      if (!panel || !btn) return;
 
-  // Init
-  items.forEach((item) => {
-    const panel = item.querySelector(".faq__answer");
-    const btn = item.querySelector(".faq__question");
-    if (!panel || !btn) return;
+      if (item.classList.contains("is-open")) openItem(item);
+      else closeItem(item);
 
-    if (item.classList.contains("is-open")) openItem(item);
-    else closeItem(item);
+      btn.addEventListener("click", () => {
+        const isOpen = item.classList.contains("is-open");
 
-    btn.addEventListener("click", () => {
-      const isOpen = item.classList.contains("is-open");
+        // close others
+        items.forEach((other) => {
+          if (other !== item) closeItem(other);
+        });
 
-      // close others
-      items.forEach((other) => {
-        if (other !== item) closeItem(other);
+        // toggle current
+        if (isOpen) closeItem(item);
+        else openItem(item);
       });
-
-      // toggle
-      if (isOpen) closeItem(item);
-      else openItem(item);
     });
-  });
 
-  // Resize fix
-  window.addEventListener("resize", () => {
-    const openItemEl = document.querySelector(".faq__item.is-open");
-    if (!openItemEl) return;
-    const panel = openItemEl.querySelector(".faq__answer");
-    panel.style.maxHeight = panel.scrollHeight + "px";
-  });
+    // Resize fix
+    window.addEventListener("resize", () => {
+      const openItemEl = document.querySelector(".faq__item.is-open");
+      if (!openItemEl) return;
+      const panel = openItemEl.querySelector(".faq__answer");
+      if (panel) panel.style.maxHeight = panel.scrollHeight + "px";
+    });
+  }
+
+  /* =========================
+     STICKY BOTTOM MENU (menuhopin)
+     ========================= */
+  const menuhopin = document.getElementById("menuhopin");
+  if (menuhopin) {
+    const threshold = 50;
+
+    function onScroll() {
+      if (window.scrollY > threshold) menuhopin.classList.add("headershow");
+      else menuhopin.classList.remove("headershow");
+    }
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  /* =========================
+     FOOTER BACK TO TOP
+     ========================= */
+  const topBtn = document.querySelector(".footer__toTop");
+  if (topBtn) {
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 });
