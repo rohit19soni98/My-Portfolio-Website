@@ -42,7 +42,7 @@
               BOOK A CALL <span class="arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right-long"></i></span>
             </a>
 
-            <a href="#" class="btn btn--link" download>
+            <a href="#" class="btn--link" download>
               DOWNLOAD CV <span class="arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right-long"></i></span>
             </a>
           </div>
@@ -58,12 +58,90 @@
       </div>
     </section>
 
+    <!-- Services -->
+
+
+    <section class="services">
+      <div class="services__container">
+
+        <p class="subtitle">SERVICES</p>
+
+        <h2 class="services__title">
+          Design that solves problems, one product at a time.
+        </h2>
+
+        <p class="services__subtitle">
+          Hi! I’m Rohit, a product designer based in Nagpur. I create user-friendly
+          interfaces for fast-growing startups.
+        </p>
+
+        <div class="services__grid">
+
+          <!-- Card -->
+          <article class="services__card">
+            <div class="services__icon">
+              <!-- SVG PLACEHOLDER -->
+              <svg viewBox="0 0 64 64" aria-hidden="true"></svg>
+            </div>
+
+            <h3 class="services__heading">What I can do for you</h3>
+            <p class="services__desc">
+              Faster, better products that your users love. Here's all the services I provide:
+            </p>
+
+            <ul class="services__list">
+              <li>Design Strategy</li>
+              <li>Web and Mobile App Design</li>
+              <li>Front-end Development</li>
+            </ul>
+          </article>
+
+          <!-- Card -->
+          <article class="services__card">
+            <div class="services__icon">
+              <svg viewBox="0 0 64 64" aria-hidden="true"></svg>
+            </div>
+
+            <h3 class="services__heading">Applications I'm fluent in</h3>
+            <p class="services__desc">
+              Every designer needs the right tools to do the perfect job. Thankfully, I'm multilingual.
+            </p>
+
+            <ul class="services__list">
+              <li>Figma</li>
+              <li>WordPress</li>
+              <li>Shopify</li>
+            </ul>
+          </article>
+
+          <!-- Card -->
+          <article class="services__card">
+            <div class="services__icon">
+              <svg viewBox="0 0 64 64" aria-hidden="true"></svg>
+            </div>
+
+            <h3 class="services__heading">What you can expect</h3>
+            <p class="services__desc">
+              I design products that are more than pretty. I make them shippable and usable.
+            </p>
+
+            <ul class="services__list">
+              <li>Clean and functional</li>
+              <li>Device and user friendly</li>
+              <li>Efficient and maintainable</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
     <!-- FAQ -->
     <section class="faq" aria-label="Frequently Asked Questions">
       <div class="faq__container">
 
         <aside class="faq__intro">
-          <div class="subtitle faq__kicker">FAQ'S</div>
+          <div class="subtitle">FAQ'S</div>
 
           <h2 class="faq__title">Frequently Asked<br />Questions</h2>
 
@@ -235,6 +313,43 @@
 
 
   <script src="./script.js" defer></script>
+
+  <!-- 1. Include the Lenis library -->
+  <script src="https://unpkg.com/lenis@1.3.16/dist/lenis.min.js"></script>
+
+  <!-- 2. Initialize and run Lenis -->
+  <script>
+    // Initialize Lenis with basic options
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // default easing function
+      direction: 'vertical', // vertical, horizontal
+      gestureDirection: 'vertical', // vertical, horizontal, both
+      smooth: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    // Use requestAnimationFrame (raf) loop to constantly update the scroll animation
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    // Start the animation frame loop
+    requestAnimationFrame(raf);
+
+    // Optional: Listen for scroll events to log data or trigger other actions
+    lenis.on('scroll', (e) => {
+      // console.log(e);
+    });
+  </script>
+
+</body>
+
+</html>
+
 </body>
 
 </html>
