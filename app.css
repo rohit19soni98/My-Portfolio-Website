@@ -916,14 +916,17 @@ p {
   position: fixed;
   left: 50%;
   bottom: 16px;
-  transform: translate(-50%, 120%); /* hidden below screen */
+  transform: translate(-50%, 120%);
+  /* hidden below screen */
   transition: transform 0.34s ease;
   z-index: 9999;
+  will-change: transform;
 }
 
 /* Show state */
 #menuhopin.headershow {
-  transform: translate(-50%, 0); /* slide into view */
+  transform: translate(-50%, 0);
+  /* slide into view */
 }
 
 /* Menu bar UI */
@@ -952,10 +955,10 @@ p {
 
 .footerMenu__link:hover {
   color: var(--color-white);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--color-dark-overlay);
 }
 
 .footerMenu__link.is-active {
   color: var(--color-white);
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--color-dark-overlay);
 }
