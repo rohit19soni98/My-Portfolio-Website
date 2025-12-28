@@ -26,7 +26,7 @@
 
         <div class="hero__copy">
           <h1 class="hero__title">
-            <span class="bg hero__kicker">I Design Products</span><br />
+            <span class="bg">I Design Products</span><br />
             <span class="headline active">That people love &amp; remember.</span>
             <span class="headline">That inspire &amp; engage.</span>
             <span class="headline">That make life easier.</span>
@@ -58,9 +58,8 @@
       </div>
     </section>
 
+
     <!-- Services -->
-
-
     <section class="services">
       <div class="services__container">
         <div class="con1">
@@ -83,7 +82,7 @@
           <article class="services__card">
             <div class="services__icon">
               <!-- SVG PLACEHOLDER -->
-              <img src="./Assests/Services 1.svg" alt="Rohit profile photo" class="hero__image" loading="lazy"/>
+              <img src="./Assets/Services 1.svg" alt="Rohit profile photo" class="hero__image" loading="lazy" />
             </div>
 
             <h3 class="services__heading">What I can do for you</h3>
@@ -101,7 +100,7 @@
           <!-- Card -->
           <article class="services__card">
             <div class="services__icon">
-              <img src="./Assests/Services 2.svg" alt="Rohit profile photo" class="hero__image" loading="lazy" />
+              <img src="./Assets/Services 2.svg" alt="Rohit profile photo" class="hero__image" loading="lazy" />
             </div>
 
             <h3 class="services__heading">Applications I'm fluent in</h3>
@@ -119,7 +118,7 @@
           <!-- Card -->
           <article class="services__card">
             <div class="services__icon">
-              <img src="./Assests/Services 3.svg" alt="Rohit profile photo" class="hero__image" loading="lazy"/>
+              <img src="./Assets/Services 3.svg" alt="Rohit profile photo" class="hero__image" loading="lazy" />
             </div>
 
             <h3 class="services__heading">What you can expect</h3>
@@ -138,6 +137,81 @@
       </div>
     </section>
 
+    <!-- BLOG -->
+    <section class="blogs-section" id="blogs">
+      <div class="blogs-container">
+
+        <!-- Left -->
+        <div class="faq__intro">
+          <span class="subtitle">BLOGS</span>
+          <h2 class="blogs-title">Latest Blogs</h2>
+
+          <p class="blogs-text">
+            Read my latest articles on design, creativity, and building meaningful digital experiences.
+            Discover practical insights, trends, and inspiration to help you elevate your own creative journey.
+          </p>
+
+          <a href="#" class="blogs-view">
+            VIEW ALL <i class="fa-solid fa-arrow-right-long"></i>
+          </a>
+        </div>
+
+        <!-- Right (static for now) -->
+        <div class="blogs-right">
+
+          <div class="blog-item">
+            <div class="meta">
+              <span>August 29, 2025</span>
+              <span class="dot">•</span>
+              <span>8:25 pm</span>
+            </div>
+
+            <h3>Design Tips for Designers: A Complete Guide to Improve Your Skills</h3>
+
+            <a href="#" class="read-link">
+              READ THE ARTICLE <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+
+          <hr />
+
+          <div class="blog-item">
+            <div class="meta">
+              <span>November 21, 2025</span>
+              <span class="dot">•</span>
+              <span>3:35 pm</span>
+            </div>
+
+            <h3>How to Build Rapport With Web Design Clients for Long-Term Success</h3>
+
+            <a href="#" class="read-link">
+              READ THE ARTICLE <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+
+          <hr />
+
+          <div class="blog-item">
+            <div class="meta">
+              <span>November 25, 2025</span>
+              <span class="dot">•</span>
+              <span>7:29 am</span>
+            </div>
+
+            <h3>The Ultimate Guide to Creating High-Converting Landing Pages</h3>
+
+            <a href="#" class="read-link">
+              READ THE ARTICLE <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+
+          <hr />
+
+        </div>
+      </div>
+    </section>
+
+
     <!-- FAQ -->
     <section class="faq" aria-label="Frequently Asked Questions">
       <div class="faq__container">
@@ -145,7 +219,7 @@
         <aside class="faq__intro">
           <div class="subtitle">FAQ'S</div>
 
-          <h2 class="faq__title">Frequently Asked<br />Questions</h2>
+          <h2 class="faq__title">Frequently Asked Questions</h2>
 
           <p class="faq__desc">
             Find quick answers to the most common questions about my work, services, and process.
@@ -276,44 +350,20 @@
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer" aria-label="Footer">
-    <div class="footer__container">
-
-      <div class="footer__cta">
-        <h2 class="footer__title">Ready to make something kickass?</h2>
-        <h2 class="footer__subtitle bg">Let's get on a call.</h2>
-      </div>
-
-      <div class="footer__bottom">
-        <div class="footer__left">
-          <span>Copyright © 2025 Rohit Soni</span>
-          <span class="footer__sep" aria-hidden="true">|</span>
-          <a class="footer__link" href="#">Privacy Policy</a>
-        </div>
-
-        <div class="footer__right">
-          Website Made with ☕ ❤️
-        </div>
-      </div>
-
-
-
-    </div>
-    <button class="footer__toTop" type="button" aria-label="Back to top">
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
-    <!-- Sticky Bottom Footer Menu (outside footer grid) -->
-    <nav id="menuhopin" class="footerMenu glassmorphism" aria-label="Footer menu">
-      <a class="footerMenu__link is-active" href="#">Home</a>
-      <a class="footerMenu__link" href="#services">Services</a>
-      <a class="footerMenu__link" href="#projects">Projects</a>
-      <a class="footerMenu__link" href="#blog">Blog</a>
-      <a class="footerMenu__link" href="#contact">Contact Me</a>
+<div id="menu">
+  <div id="menuhopin">
+    <nav class="footerMenu glassmorphism" aria-label="Footer menu">
+      <a class="footerMenu__link" href="index.html">Home</a>
+      <a class="footerMenu__link" href="index.html#services">Services</a>
+      <a class="footerMenu__link" href="index.html#projects">Projects</a>
+      <a class="footerMenu__link" href="blog.html">Blog</a>
+      <a class="footerMenu__link" href="contact.html">Contact Me</a>
     </nav>
-  </footer>
+  </div>
+</div>
 
 
+  <script src="Assets/footer.js"></script>
   <script src="./script.js" defer></script>
 
   <!-- 1. Include the Lenis library -->
@@ -347,10 +397,6 @@
       // console.log(e);
     });
   </script>
-
-</body>
-
-</html>
 
 </body>
 

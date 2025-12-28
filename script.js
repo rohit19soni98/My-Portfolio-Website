@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startHeadlineRotation();
 
+
   // -------------------------
   // FAQ ACCORDION (delegated)
   // -------------------------
