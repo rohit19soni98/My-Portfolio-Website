@@ -909,25 +909,22 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 999;
 }
 
 /* Container fixed at bottom */
 #menuhopin {
-  position: fixed;
-  left: 50%;
-  bottom: 16px;
-  transform: translate(-50%, 120%);
-  /* hidden below screen */
-  transition: transform 0.34s ease;
-  z-index: 9999;
-  will-change: transform;
+    position: fixed;
+    bottom: 0; /* stick to bottom instead of top */
+    -webkit-transition: transform 0.34s ease;
+    transition: transform 0.34s ease;
+    transform: translateY(140px); /* hidden below the viewport */
 }
 
-/* Show state */
 #menuhopin.headershow {
-  transform: translate(-50%, 0);
-  /* slide into view */
+    transform: translateY(0); /* slide up into view */
 }
+
 
 /* Menu bar UI */
 .footerMenu {
@@ -941,6 +938,7 @@ p {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .footerMenu__link {

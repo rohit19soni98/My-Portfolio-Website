@@ -92,28 +92,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------
   // STICKY BOTTOM MENU (rAF)
   // -------------------------
-  const menuhopin = document.getElementById("menuhopin");
-  console.log("menuhopin found:", !!menuhopin);
+  // const menuhopin = document.getElementById("menuhopin");
+  // console.log("menuhopin found:", !!menuhopin);
 
-  if (menuhopin) {
-    const threshold = 50;
-    let ticking = false;
+  // if (menuhopin) {
+  //   const threshold = 50;
+  //   let ticking = false;
 
-    function updateMenu() {
-      ticking = false;
-      menuhopin.classList.toggle("headershow", window.scrollY > threshold);
-    }
+  //   function updateMenu() {
+  //     ticking = false;
+  //     menuhopin.classList.toggle("headershow", window.scrollY > threshold);
+  //   }
 
-    function onScroll() {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(updateMenu);
-      }
-    }
+  //   function onScroll() {
+  //     if (!ticking) {
+  //       ticking = true;
+  //       requestAnimationFrame(updateMenu);
+  //     }
+  //   }
 
-    updateMenu();
-    window.addEventListener("scroll", onScroll, { passive: true });
-  }
+  //   updateMenu();
+  //   window.addEventListener("scroll", onScroll, { passive: true });
+  // }
 
   // -------------------------
   // BACK TO TOP

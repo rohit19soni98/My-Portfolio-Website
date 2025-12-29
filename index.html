@@ -350,18 +350,33 @@
 
   </main>
 
-<div id="menu">
-  <div id="menuhopin">
-    <nav class="footerMenu glassmorphism" aria-label="Footer menu">
-      <a class="footerMenu__link" href="index.html">Home</a>
-      <a class="footerMenu__link" href="index.html#services">Services</a>
-      <a class="footerMenu__link" href="index.html#projects">Projects</a>
-      <a class="footerMenu__link" href="blog.html">Blog</a>
-      <a class="footerMenu__link" href="contact.html">Contact Me</a>
-    </nav>
-  </div>
-</div>
+  <div id="menu">
+    <!-- Navigation Menu Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('scroll', function () {
+          let y = window.scrollY;
+          let menuhopin = document.getElementById('menuhopin');
+          if (y > 80) { // adjust scroll threshold
+            menuhopin.classList.add('headershow');
+          } else {
+            menuhopin.classList.remove('headershow');
+          }
+        });
+      });
+    </script>
 
+
+    <div id="menuhopin">
+      <nav class="footerMenu glassmorphism" aria-label="Footer menu">
+        <a class="footerMenu__link" href="index.html">Home</a>
+        <a class="footerMenu__link" href="index.html#services">Services</a>
+        <a class="footerMenu__link" href="index.html#projects">Projects</a>
+        <a class="footerMenu__link" href="blog.html">Blog</a>
+        <a class="footerMenu__link" href="contact.html">Contact Me</a>
+      </nav>
+    </div>
+  </div>
 
   <script src="Assets/footer.js"></script>
   <script src="./script.js" defer></script>
