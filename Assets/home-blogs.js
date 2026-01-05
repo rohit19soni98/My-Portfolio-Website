@@ -29,7 +29,7 @@
         <span>${(Array.isArray(blog.categories) && blog.categories.length) ? blog.categories[0] : "Blog"}</span>
       </div>
 
-      <h3>${escapeHtml(blog.title)}</h3>
+      <h3 class="h3 text-white">${escapeHtml(blog.title)}</h3>
 
       <a href="${blogLink(blog.id)}" class="read-link">
         READ THE ARTICLE <i class="fa-solid fa-arrow-right-long"></i>
