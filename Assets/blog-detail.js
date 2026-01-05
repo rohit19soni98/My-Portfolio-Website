@@ -1,3 +1,9 @@
+// Assets/blog-detail.js
+const BLOGS = window.BLOGS || [];
+
+// (optional) newest first so prev/next follows latest order
+BLOGS.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
 function getQueryParam(name) {
   const url = new URL(window.location.href);
   return url.searchParams.get(name);
@@ -23,10 +29,9 @@ function makeTOC(container, contentRoot) {
     if (!h.id) {
       h.id = h.textContent.trim().toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
     }
-
     const li = document.createElement("li");
     li.className = "toc-item " + (h.tagName === "H3" ? "toc-sub" : "");
-    li.innerHTML = `<a href="#${encodeURIComponent(h.id)}">${h.textContent}</a>`;
+    li.innerHTML = `<a href="#${h.id}">${h.textContent}</a>`;
     ul.appendChild(li);
   });
 
@@ -95,13 +100,16 @@ function setupScrollProgress() {
 
   document.title = blog.title;
   document.getElementById("blogTitle").textContent = blog.title;
-  document.getElementById("blogMeta").textContent = `${blog.date} • ${blog.categories.join(", ")}`;
+
+  document.getElementById("blogMeta").textContent =
+    `${blog.date || ""} • ${(Array.isArray(blog.categories) ? blog.categories.join(", ") : "")}`;
 
   const cats = document.getElementById("blogCategories");
-  cats.innerHTML = blog.categories.map(c => `<span class="chip">${c}</span>`).join("");
+  cats.innerHTML = (Array.isArray(blog.categories) ? blog.categories : [])
+    .map(c => `<span class="chip">${c}</span>`).join("");
 
   const contentEl = document.getElementById("blogContent");
-  contentEl.innerHTML = blog.content;
+  contentEl.innerHTML = blog.content || "<p class='muted'>No content.</p>";
 
   makeTOC(document.getElementById("toc"), contentEl);
   setPrevNext(index);

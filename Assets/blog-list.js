@@ -1,4 +1,6 @@
-const PER_PAGE = 3;
+// Assets/blog-list.js
+const BLOGS = window.BLOGS || [];
+const PER_PAGE = 9;
 
 const cardsRow = document.getElementById("cardsRow");
 const pagination = document.getElementById("pagination");
@@ -8,8 +10,11 @@ const nextPageBtn = document.getElementById("nextPageBtn");
 
 let currentPage = 1;
 
+// newest first
+BLOGS.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
 function totalPages() {
-  return Math.ceil(BLOGS.length / PER_PAGE);
+  return Math.max(1, Math.ceil(BLOGS.length / PER_PAGE));
 }
 
 function paginateBlogs(page) {
@@ -23,15 +28,15 @@ function renderCards(page) {
   cardsRow.innerHTML = items.map(blog => `
     <article class="card">
       <a class="card-link" href="blog-detail.html?id=${encodeURIComponent(blog.id)}">
-        <img class="card-img" src="${blog.cover}" alt="${blog.title}">
+        <img class="card-img" src="${blog.cover}" alt="${escapeHtml(blog.title)}">
         <div class="card-body">
           <div class="card-meta">
-            <span>${blog.date}</span>
+            <span>${blog.date || ""}</span>
             <span class="dot">•</span>
-            <span>${blog.categories.join(", ")}</span>
+            <span>${Array.isArray(blog.categories) ? blog.categories.join(", ") : ""}</span>
           </div>
-          <h3 class="card-title">${blog.title}</h3>
-          <p class="card-excerpt">${blog.excerpt}</p>
+          <h3 class="card-title">${escapeHtml(blog.title)}</h3>
+          <p class="card-excerpt">${escapeHtml(blog.excerpt || "")}</p>
           <span class="card-cta">Read more →</span>
         </div>
       </a>
@@ -51,6 +56,7 @@ function renderPagination() {
   for (let i = 1; i <= pages; i++) {
     const btn = document.createElement("button");
     btn.className = "page-btn" + (i === currentPage ? " active" : "");
+    btn.type = "button";
     btn.textContent = i;
     btn.addEventListener("click", () => {
       currentPage = i;
@@ -61,6 +67,7 @@ function renderPagination() {
 }
 
 function update() {
+  currentPage = Math.min(Math.max(1, currentPage), totalPages());
   renderCards(currentPage);
   renderPagination();
 }
@@ -80,3 +87,12 @@ nextPageBtn.addEventListener("click", () => {
 });
 
 update();
+
+function escapeHtml(str) {
+  return String(str || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
