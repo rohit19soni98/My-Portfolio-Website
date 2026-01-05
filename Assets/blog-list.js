@@ -10,6 +10,19 @@ const nextPageBtn = document.getElementById("nextPageBtn");
 
 let currentPage = 1;
 
+// Local dev (VS Code Live Server) vs Production (Hostinger)
+const isLocal =
+  location.hostname === "127.0.0.1" ||
+  location.hostname === "localhost";
+
+// Build correct link for both environments
+function blogLink(id) {
+  const slug = encodeURIComponent(id);
+  return isLocal
+    ? `blog-detail.html?id=${slug}`  // Live Server
+    : `/blog/${slug}`;              // Hostinger clean URL
+}
+
 // newest first
 BLOGS.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 
@@ -27,7 +40,7 @@ function renderCards(page) {
 
   cardsRow.innerHTML = items.map(blog => `
     <article class="card">
-      <a class="card-link" href="blog-detail.html?id=${encodeURIComponent(blog.id)}">
+      <a class="card-link" href="${blogLink(blog.id)}">
         <img class="card-img" src="${blog.cover}" alt="${escapeHtml(blog.title)}">
         <div class="card-body">
           <div class="card-meta">

@@ -101,12 +101,13 @@ function setupScrollProgress() {
   document.title = blog.title;
   document.getElementById("blogTitle").textContent = blog.title;
 
-  document.getElementById("blogMeta").textContent =
-    `${blog.date || ""} • ${(Array.isArray(blog.categories) ? blog.categories.join(", ") : "")}`;
+  const catsText = Array.isArray(blog.categories) ? blog.categories.join(", ") : "";
+  document.getElementById("blogMeta").textContent = `${blog.date || ""}${catsText ? " • " + catsText : ""}`;
 
   const cats = document.getElementById("blogCategories");
   cats.innerHTML = (Array.isArray(blog.categories) ? blog.categories : [])
-    .map(c => `<span class="chip">${c}</span>`).join("");
+    .map(c => `<span class="chip">${c}</span>`)
+    .join("");
 
   const contentEl = document.getElementById("blogContent");
   contentEl.innerHTML = blog.content || "<p class='muted'>No content.</p>";
